@@ -1,5 +1,6 @@
 package com.bunk.urbanmobility.api
 
+import com.bunk.urbanmobility.api.entity.RepositoryResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

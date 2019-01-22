@@ -1,4 +1,4 @@
-package com.bunk.urbanmobility.api
+package com.bunk.urbanmobility.api.entity
 
 import com.google.gson.annotations.SerializedName
 
