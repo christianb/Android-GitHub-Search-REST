@@ -1,6 +1,7 @@
 package com.bunk.urbanmobility.view.list
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -13,6 +14,7 @@ import com.bunk.urbanmobility.view.detail.RepositoryDetailActivity
 import kotlinx.android.synthetic.main.repository_list_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.bunk.urbanmobility.view.ShowProgressBar
 
 private val TAG = RepositoryListActivity::class.java.simpleName
 
@@ -53,6 +55,12 @@ class RepositoryListActivity : AppCompatActivity() {
         repositoryListViewModel.infoLiveData.observe(this,
             Observer<Info> {
                 Toast.makeText(this, it.resId, Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        repositoryListViewModel.progressBarLiveData.observe(this,
+            Observer<ShowProgressBar> {
+                progressBar.visibility = if (it.visibile) View.VISIBLE else View.INVISIBLE
             }
         )
 
