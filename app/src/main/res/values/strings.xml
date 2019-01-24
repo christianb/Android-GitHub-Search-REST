@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">UrbanMobility</string>
     <string name="could_not_fetch_repositories">Could not fetch repositories</string>
-    <string name="name">Name: %1$s</string>
+    <string name="could_not_fetch_repository_details">Could not fetch repository details</string>
+    <string name="stars">Stars: %1$d</string>
+    <string name="url">url: %1$s</string>
+    <string name="forks">Forks: %1$d</string>
+    <string name="open_issues">Issues: %1$d</string>
+    <string name="default_branch">default_branch: %1$s</string>
+    <string name="language">Language: %1$s</string>
+    <string name="avatar_image">avatar image</string>
 </resources>

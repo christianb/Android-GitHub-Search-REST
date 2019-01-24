@@ -6,8 +6,11 @@ import io.reactivex.Single
 class GitHubDataSourceImpl(
     private val gitHubApi: GitHubApi
 ) : GitHubDataSource {
-    
-    override fun getRepositories(): Single<List<RepositoryItem>> =
-        gitHubApi.getRepositories()
-            .map { it.items }
+
+    override fun getRepositories(stars: Int): Single<List<RepositoryItem>> {
+        return gitHubApi.getRepositories("stars:>=$stars").map { it.items }
+    }
+
+    override fun getDetails(id: Int): Single<RepositoryItem> =
+        gitHubApi.getRepository(id)
 }

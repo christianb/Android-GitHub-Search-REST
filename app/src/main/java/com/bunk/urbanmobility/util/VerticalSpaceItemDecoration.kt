@@ -10,5 +10,6 @@ class VerticalSpaceItemDecoration(
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         outRect.bottom = verticalSpaceHeight
+        outRect.top = verticalSpaceHeight
     }
 }
