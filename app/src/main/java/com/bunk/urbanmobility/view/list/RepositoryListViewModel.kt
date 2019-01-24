@@ -10,6 +10,7 @@ import com.bunk.urbanmobility.scheduler.SubscribeOnScheduler
 import com.bunk.urbanmobility.view.Info
 import com.bunk.urbanmobility.view.ShowProgressBar
 import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.subscribeBy
 
 const val DEFAULT_STARS = 10000
 
@@ -30,8 +31,8 @@ class RepositoryListViewModel(
         disposable = gitHubDataSource.getRepositories(DEFAULT_STARS)
             .subscribeOn(subscribeOnScheduler.io)
             .observeOn(observeOnScheduler.androidMainThreadScheduler)
-            .subscribe(
-                {
+            .subscribeBy(
+                onSuccess = {
                     val list = liveData.value ?: emptyList()
                     val mutableList = mutableListOf<RepositoryItem>()
 
@@ -41,7 +42,8 @@ class RepositoryListViewModel(
                     liveData.value = mutableList
                     progressBarLiveData.value = ShowProgressBar(false)
                 },
-                {
+
+                onError = {
                     infoLiveData.value = Info(R.string.could_not_fetch_repositories)
                     progressBarLiveData.value = ShowProgressBar(false)
                 }

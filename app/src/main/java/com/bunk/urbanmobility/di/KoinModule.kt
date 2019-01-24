@@ -15,10 +15,12 @@ import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import retrofit2.Retrofit
 
+private const val BASE_URL = "https://api.github.com/"
+
 val module = org.koin.dsl.module.module {
 
     single<OkHttpClient> { OkHttpClient.Builder().build() }
-    single<Retrofit> { RetrofitProvider.provideRetrofit("https://api.github.com/", get()) }
+    single<Retrofit> { RetrofitProvider.provideRetrofit(BASE_URL, get()) }
     single<GitHubApi> { get<Retrofit>().create(GitHubApi::class.java) }
     factory<GitHubDataSource> { GitHubDataSourceImpl(get()) }
     factory<ObservableProvider> { ObservableProvider() }

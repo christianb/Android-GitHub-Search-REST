@@ -14,6 +14,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.util.concurrent.TimeUnit
 
 class DetailsViewModelTest {
 
@@ -41,7 +42,7 @@ class DetailsViewModelTest {
     fun `fetchDetails should update live data when successful`() {
         val id = 42
         val repositoryItem = mock<RepositoryItem>()
-        whenever(observableProvider.createObservableWithInterval()).thenReturn(Observable.just(1))
+        whenever(observableProvider.createObservableWithInterval(0, REFRESH_TIME_IN_SEC, TimeUnit.SECONDS)).thenReturn(Observable.just(1))
         whenever(gitHubDataSource.getDetails(id)).thenReturn(Single.just(repositoryItem))
 
         classToTest.fetchDetails(id)
@@ -52,8 +53,7 @@ class DetailsViewModelTest {
     @Test
     fun `fetchDetails should show info when failure`() {
         val id = 42
-        val repositoryItem = mock<RepositoryItem>()
-        whenever(observableProvider.createObservableWithInterval()).thenReturn(Observable.just(1))
+        whenever(observableProvider.createObservableWithInterval(0, REFRESH_TIME_IN_SEC, TimeUnit.SECONDS)).thenReturn(Observable.just(1))
         whenever(gitHubDataSource.getDetails(id)).thenReturn(Single.error(Exception()))
 
         classToTest.fetchDetails(id)

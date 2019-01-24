@@ -4,7 +4,11 @@ import io.reactivex.Observable
 import java.util.concurrent.TimeUnit
 
 class ObservableProvider {
-    fun createObservableWithInterval(): Observable<Long> {
-        return Observable.interval(5, 10, TimeUnit.SECONDS)
+    fun createObservableWithInterval(
+        initialDelay: Long,
+        period: Long,
+        timeUnit: TimeUnit
+    ): Observable<Long> {
+        return Observable.interval(initialDelay, period, timeUnit)
     }
 }
