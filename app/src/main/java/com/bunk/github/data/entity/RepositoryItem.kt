@@ -14,8 +14,7 @@ data class RepositoryItem(
     val description: String,
     val language: String,
     @SerializedName("forks_count") val forks: Int,
-    @SerializedName("open_issues_count") val openIssues: Int,
-    @SerializedName("default_branch") val defaultBranch: String
+    @SerializedName("open_issues_count") val openIssues: Int
 ) : Parcelable {
     constructor(source: Parcel) : this(
         source.readInt(),
@@ -27,8 +26,7 @@ data class RepositoryItem(
         source.readString() ?: "",
         source.readString() ?: "",
         source.readInt(),
-        source.readInt(),
-        source.readString() ?: ""
+        source.readInt()
     )
 
     override fun describeContents() = 0
@@ -44,7 +42,6 @@ data class RepositoryItem(
         writeString(language)
         writeInt(forks)
         writeInt(openIssues)
-        writeString(defaultBranch)
     }
 
     companion object {

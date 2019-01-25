@@ -34,7 +34,7 @@ class RepositoryListViewModel(
     fun loadNextPage() {
         Log.d(TAG, "load next page")
         progressBarLiveData.value = ShowProgressBar(true)
-        gitHubRepository.getNextPage(DEFAULT_STARS).doSubscribe().addTo(compositeDisposable)
+        gitHubRepository.getNextRepositoryPage(DEFAULT_STARS).doSubscribe().addTo(compositeDisposable)
     }
 
     fun fetchRepositories() {

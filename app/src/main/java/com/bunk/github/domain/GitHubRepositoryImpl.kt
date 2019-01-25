@@ -12,13 +12,17 @@ class GitHubRepositoryImpl(
 
     private var page = DEFAULT_PAGE
 
-    override fun getNextPage(stars: Int): Single<List<RepositoryItem>> {
+    override fun getNextRepositoryPage(stars: Int): Single<List<RepositoryItem>> {
         return getRepositories(stars, page = ++page)
     }
 
     override fun getRepositories(stars: Int): Single<List<RepositoryItem>> {
         page = DEFAULT_PAGE
         return getRepositories(stars, page = page)
+    }
+
+    override fun getDetails(id: Int): Single<RepositoryItem> {
+        return gitHubDataSource.getDetails(id)
     }
 
     private fun getRepositories(stars: Int, page: Int): Single<List<RepositoryItem>> {

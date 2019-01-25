@@ -7,7 +7,15 @@
     <TextView
         android:id="@+id/detailsNameTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:id="@+id/starsTextView"
@@ -20,10 +28,6 @@
         android:layout_height="wrap_content"
         android:autoLink="web" />
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/languageTextView"
@@ -37,11 +41,6 @@
 
     <TextView
         android:id="@+id/openIssuesTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/defaultBranchTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

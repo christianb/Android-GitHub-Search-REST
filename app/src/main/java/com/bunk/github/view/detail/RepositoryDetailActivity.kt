@@ -27,13 +27,11 @@ class RepositoryDetailActivity : AppCompatActivity() {
             Observer<RepositoryItem> { repositoryItem ->
                 detailsNameTextView.text = repositoryItem.name
                 starsTextView.text = String.format(getString(R.string.stars), repositoryItem.stars)
-                urlTextView.text = String.format(getString(R.string.url), repositoryItem.url)
+                urlTextView.text = repositoryItem.url
                 descriptionTextView.text = repositoryItem.description
                 languageTextView.text = repositoryItem.language
                 forksTextView.text = String.format(getString(R.string.forks), repositoryItem.forks)
                 openIssuesTextView.text = String.format(getString(R.string.open_issues), repositoryItem.openIssues)
-                defaultBranchTextView.text =
-                        String.format(getString(R.string.default_branch), repositoryItem.defaultBranch)
                 GlideProvider.Builder().url(repositoryItem.owner.avatarUrl).into(avatarImageView)
             })
 

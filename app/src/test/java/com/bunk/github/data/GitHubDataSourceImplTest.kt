@@ -5,6 +5,7 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
+import io.reactivex.rxkotlin.subscribeBy
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -28,9 +29,8 @@ class GitHubDataSourceImplTest {
 
         var result: RepositoryResponse? = null
         classToTest.getRepositories(stars)
-            .subscribe(
-                { result = it },
-                { /* no implementation */ }
+            .subscribeBy(
+                onSuccess = { result = it }
             )
 
         assertThat(result).isEqualTo(repositoryResponse)
