@@ -1,9 +1,6 @@
 package com.bunk.urbanmobility.di
 
-import com.bunk.urbanmobility.data.GitHubApi
-import com.bunk.urbanmobility.data.GitHubDataSource
-import com.bunk.urbanmobility.data.GitHubDataSourceImpl
-import com.bunk.urbanmobility.data.RetrofitProvider
+import com.bunk.urbanmobility.data.*
 import com.bunk.urbanmobility.domain.GitHubRepository
 import com.bunk.urbanmobility.domain.GitHubRepositoryImpl
 import com.bunk.urbanmobility.scheduler.ObserveOnScheduler
@@ -21,7 +18,11 @@ private const val BASE_URL = "https://api.github.com/"
 
 val module = org.koin.dsl.module.module {
 
-    single<OkHttpClient> { OkHttpClient.Builder().build() }
+    single<OkHttpClient> {
+        OkHttpClient.Builder()
+            .addInterceptor(OkReplayInterceptorSingleton)
+            .build()
+    }
     single<Retrofit> { RetrofitProvider.provideRetrofit(BASE_URL, get()) }
     single<GitHubApi> { get<Retrofit>().create(GitHubApi::class.java) }
     factory<GitHubDataSource> { GitHubDataSourceImpl(get()) }

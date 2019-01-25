@@ -51,7 +51,7 @@ class RepositoryListViewModel(
                     val mutableList = mutableListOf<RepositoryItem>()
 
                     mutableList.addAll(list)
-                    mutableList.addAll(oit)
+                    mutableList.addAll(it)
 
                     liveData.value = mutableList
                     progressBarLiveData.value = ShowProgressBar(false)
