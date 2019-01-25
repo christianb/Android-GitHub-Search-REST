@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.bunk.urbanmobility">
+    package="com.bunk.github">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.bunk.urbanmobility.App"
+        android:name="com.bunk.github.App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.bunk.urbanmobility.view.list.RepositoryListActivity">
+        <activity android:name="com.bunk.github.view.list.RepositoryListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.detail.RepositoryDetailActivity"/>
+        <activity android:name="com.bunk.github.view.detail.RepositoryDetailActivity"/>
     </application>
 
 </manifest>

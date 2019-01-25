@@ -1,13 +1,13 @@
 # About
 * 100% Kotlin
 * AndroidX
-* MVP
+* MVVM
 * Clean Architecture
-* No implementation of `refresh_token`
+* Not updating details view every second, since GitHub only allows up to
+10 requests per minute. So it gets updated every 10 seconds.
 
 ## Testing
 * UnitTests with JUnit.
-* Follow TDD.
 * No lint warnings & error.
 * Add Kotlin Detekt codestyle checker: `./gradlew detektCheck`
 * UI Tests with Espresso. Network independent using OkReplay.
@@ -20,4 +20,3 @@
 * Mockito for mocking
 * AssertJ for fluent assertions
 * Glide for image url loading
-* Use OkHttp interceptor to add auth token

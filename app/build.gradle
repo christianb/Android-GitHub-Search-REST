@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.bunk.urbanmobility"
+        applicationId "com.bunk.githubandroid"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -105,7 +105,7 @@ dependencies {
     releaseImplementation "com.airbnb.okreplay:noop:$version_okreplay"
     androidTestImplementation "com.airbnb.okreplay:espresso:$version_okreplay"
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+//    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
 }
