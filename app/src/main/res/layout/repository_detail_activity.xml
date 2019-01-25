@@ -17,7 +17,8 @@
     <TextView
         android:id="@+id/urlTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:autoLink="web" />
 
     <TextView
         android:id="@+id/descriptionTextView"

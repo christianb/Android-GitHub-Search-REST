@@ -3,6 +3,7 @@
 * AndroidX
 * MVVM
 * Clean Architecture
+* Open repository url (in details view) in browser
 * Not updating details view every second, since GitHub only allows up to
 10 requests per minute. So it gets updated every 10 seconds.
 
