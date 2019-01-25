@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bunk.urbanmobility.R
-import com.bunk.urbanmobility.api.entity.RepositoryItem
+import com.bunk.urbanmobility.data.entity.RepositoryItem
 import kotlinx.android.synthetic.main.repository_viewholder.view.*
 
 private val TAG = RepositoryViewHolder::class.java.simpleName

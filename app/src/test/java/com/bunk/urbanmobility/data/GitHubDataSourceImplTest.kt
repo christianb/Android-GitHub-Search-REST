@@ -1,7 +1,6 @@
-package com.bunk.urbanmobility.api
+package com.bunk.urbanmobility.data
 
-import com.bunk.urbanmobility.api.entity.RepositoryItem
-import com.bunk.urbanmobility.api.entity.RepositoryResponse
+import com.bunk.urbanmobility.data.entity.RepositoryResponse
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
@@ -9,8 +8,6 @@ import io.reactivex.Single
 import org.assertj.core.api.Assertions
 import org.junit.Before
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class GitHubDataSourceImplTest {
 
@@ -27,19 +24,16 @@ class GitHubDataSourceImplTest {
     fun `getRepositories should return list`() {
         val stars = 50
         val repositoryResponse = mock<RepositoryResponse>()
-        val repositoryItem = mock<RepositoryItem>()
-        val list: List<RepositoryItem> = listOf(repositoryItem)
         whenever(gitHubApi.getRepositories("stars:>=$stars")).thenReturn(Single.just(repositoryResponse))
-        whenever(repositoryResponse.items).thenReturn(list)
 
-        var result: List<RepositoryItem> = emptyList()
+        var result: RepositoryResponse? = null
         classToTest.getRepositories(stars)
             .subscribe(
                 { result = it },
                 { /* no implementation */ }
             )
 
-        Assertions.assertThat(result).containsExactly(repositoryItem)
+        Assertions.assertThat(result).isEqualTo(repositoryResponse)
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.bunk.urbanmobility.api.entity
+package com.bunk.urbanmobility.data.entity
 
 import android.os.Parcel
 import android.os.Parcelable

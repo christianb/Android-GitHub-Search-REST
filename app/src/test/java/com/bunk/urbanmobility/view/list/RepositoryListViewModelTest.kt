@@ -3,8 +3,8 @@ package com.bunk.urbanmobility.view.list
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.bunk.urbanmobility.R
 import com.bunk.urbanmobility.TestSchedulerProvider
-import com.bunk.urbanmobility.api.GitHubDataSource
-import com.bunk.urbanmobility.api.entity.RepositoryItem
+import com.bunk.urbanmobility.data.entity.RepositoryItem
+import com.bunk.urbanmobility.domain.GitHubRepository
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
@@ -20,7 +20,7 @@ class RepositoryListViewModelTest {
     @JvmField
     val rule = InstantTaskExecutorRule()
 
-    private val gitHubDataSource: GitHubDataSource = mock()
+    private val gitHubRepository: GitHubRepository = mock()
 
     private lateinit var classToTest: RepositoryListViewModel
 
@@ -28,7 +28,7 @@ class RepositoryListViewModelTest {
     fun setUp() {
         val testSchedulerProvider = TestSchedulerProvider()
         classToTest = RepositoryListViewModel(
-            gitHubDataSource,
+            gitHubRepository,
             testSchedulerProvider.subscribeOnScheduler,
             testSchedulerProvider.observeOnScheduler
         )
@@ -38,7 +38,7 @@ class RepositoryListViewModelTest {
     fun `fetchRepositories should set repository list when successful`() {
         val repositoryItem = mock<RepositoryItem>()
         val list: List<RepositoryItem> = listOf(repositoryItem)
-        whenever(gitHubDataSource.getRepositories(any())).thenReturn(Single.just(list))
+        whenever(gitHubRepository.getRepositories(any())).thenReturn(Single.just(list))
 
         classToTest.fetchRepositories()
 
@@ -47,7 +47,7 @@ class RepositoryListViewModelTest {
 
     @Test
     fun `fetchRepositories should set info when failure`() {
-        whenever(gitHubDataSource.getRepositories(any())).thenReturn(Single.error(Exception()))
+        whenever(gitHubRepository.getRepositories(any())).thenReturn(Single.error(Exception()))
 
         classToTest.fetchRepositories()
 
@@ -56,7 +56,7 @@ class RepositoryListViewModelTest {
 
     @Test
     fun `fetchRepositories should show progress when fetchRepositories`() {
-        whenever(gitHubDataSource.getRepositories(any())).thenReturn(Single.never())
+        whenever(gitHubRepository.getRepositories(any())).thenReturn(Single.never())
 
         classToTest.fetchRepositories()
 
@@ -65,8 +65,9 @@ class RepositoryListViewModelTest {
 
     @Test
     fun `fetchRepositories should hide progress when success`() {
-        val list: List<RepositoryItem> = listOf(mock())
-        whenever(gitHubDataSource.getRepositories(any())).thenReturn(Single.just(list))
+        val repositoryItem: RepositoryItem = mock()
+        val list: List<RepositoryItem> = listOf(repositoryItem)
+        whenever(gitHubRepository.getRepositories(any())).thenReturn(Single.just(list))
 
         classToTest.fetchRepositories()
 
@@ -75,7 +76,7 @@ class RepositoryListViewModelTest {
 
     @Test
     fun `fetchRepositories should hide progress when failure`() {
-        whenever(gitHubDataSource.getRepositories(any())).thenReturn(Single.error(Exception()))
+        whenever(gitHubRepository.getRepositories(any())).thenReturn(Single.error(Exception()))
 
         classToTest.fetchRepositories()
 

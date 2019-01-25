@@ -1,4 +1,4 @@
-package com.bunk.urbanmobility.api
+package com.bunk.urbanmobility.data
 
 interface ResponseListener<T> {
     fun onSuccess(t: T)

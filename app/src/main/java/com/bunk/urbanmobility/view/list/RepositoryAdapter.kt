@@ -3,7 +3,7 @@ package com.bunk.urbanmobility.view.list
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.bunk.urbanmobility.api.entity.RepositoryItem
+import com.bunk.urbanmobility.data.entity.RepositoryItem
 
 class RepositoryAdapter : ListAdapter<RepositoryItem, RepositoryViewHolder>(DIFF_UTIL_ITEM_CALLBACK) {
 

@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bunk.urbanmobility.R
-import com.bunk.urbanmobility.api.entity.RepositoryItem
+import com.bunk.urbanmobility.data.entity.RepositoryItem
 import com.bunk.urbanmobility.util.GlideProvider
 import com.bunk.urbanmobility.view.Info
 import kotlinx.android.synthetic.main.repository_detail_activity.*

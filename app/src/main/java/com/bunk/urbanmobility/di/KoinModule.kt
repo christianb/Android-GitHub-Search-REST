@@ -1,9 +1,11 @@
 package com.bunk.urbanmobility.di
 
-import com.bunk.urbanmobility.api.GitHubApi
-import com.bunk.urbanmobility.api.GitHubDataSource
-import com.bunk.urbanmobility.api.GitHubDataSourceImpl
-import com.bunk.urbanmobility.api.RetrofitProvider
+import com.bunk.urbanmobility.data.GitHubApi
+import com.bunk.urbanmobility.data.GitHubDataSource
+import com.bunk.urbanmobility.data.GitHubDataSourceImpl
+import com.bunk.urbanmobility.data.RetrofitProvider
+import com.bunk.urbanmobility.domain.GitHubRepository
+import com.bunk.urbanmobility.domain.GitHubRepositoryImpl
 import com.bunk.urbanmobility.scheduler.ObserveOnScheduler
 import com.bunk.urbanmobility.scheduler.ObserveOnSchedulerImpl
 import com.bunk.urbanmobility.scheduler.SubscribeOnScheduler
@@ -24,6 +26,7 @@ val module = org.koin.dsl.module.module {
     single<GitHubApi> { get<Retrofit>().create(GitHubApi::class.java) }
     factory<GitHubDataSource> { GitHubDataSourceImpl(get()) }
     factory<ObservableProvider> { ObservableProvider() }
+    factory<GitHubRepository> { GitHubRepositoryImpl(get()) }
 
     viewModel { RepositoryListViewModel(get(), get(), get()) }
     viewModel { DetailsViewModel(get(), get(), get(), get()) }

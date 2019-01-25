@@ -3,8 +3,8 @@ package com.bunk.urbanmobility.view.detail
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.bunk.urbanmobility.R
 import com.bunk.urbanmobility.TestSchedulerProvider
-import com.bunk.urbanmobility.api.GitHubDataSource
-import com.bunk.urbanmobility.api.entity.RepositoryItem
+import com.bunk.urbanmobility.data.GitHubDataSource
+import com.bunk.urbanmobility.data.entity.RepositoryItem
 import com.bunk.urbanmobility.util.ObservableProvider
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever

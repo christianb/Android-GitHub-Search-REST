@@ -3,8 +3,8 @@ package com.bunk.urbanmobility.view.detail
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bunk.urbanmobility.R
-import com.bunk.urbanmobility.api.GitHubDataSource
-import com.bunk.urbanmobility.api.entity.RepositoryItem
+import com.bunk.urbanmobility.data.GitHubDataSource
+import com.bunk.urbanmobility.data.entity.RepositoryItem
 import com.bunk.urbanmobility.scheduler.ObserveOnScheduler
 import com.bunk.urbanmobility.scheduler.SubscribeOnScheduler
 import com.bunk.urbanmobility.util.ObservableProvider

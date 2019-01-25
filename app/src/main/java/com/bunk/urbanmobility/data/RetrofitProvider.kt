@@ -1,4 +1,4 @@
-package com.bunk.urbanmobility.api
+package com.bunk.urbanmobility.data
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

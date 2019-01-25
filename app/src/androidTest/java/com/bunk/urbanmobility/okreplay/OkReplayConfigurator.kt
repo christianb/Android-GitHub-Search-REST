@@ -3,7 +3,7 @@ package com.bunk.urbanmobility.okreplay
 import android.Manifest
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.rule.GrantPermissionRule
-import com.bunk.urbanmobility.api.OkReplayInterceptorSingleton
+import com.bunk.urbanmobility.data.OkReplayInterceptorSingleton
 import okreplay.*
 import org.junit.rules.RuleChain
 

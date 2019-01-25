@@ -7,18 +7,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bunk.urbanmobility.R
-import com.bunk.urbanmobility.api.entity.RepositoryItem
+import com.bunk.urbanmobility.data.entity.RepositoryItem
 import com.bunk.urbanmobility.util.VerticalSpaceItemDecoration
 import com.bunk.urbanmobility.view.Info
 import com.bunk.urbanmobility.view.detail.RepositoryDetailActivity
 import kotlinx.android.synthetic.main.repository_list_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.bunk.urbanmobility.util.PaginationScrollListener
 import com.bunk.urbanmobility.view.ShowProgressBar
 
 private val TAG = RepositoryListActivity::class.java.simpleName
 
 private const val VERTICAL_SPACE_HEIGHT = 50
+private const val POSITION_TO_END_TO_REQUEST_NEW_ITEMS = 10
 
 class RepositoryListActivity : AppCompatActivity() {
 
@@ -34,6 +36,9 @@ class RepositoryListActivity : AppCompatActivity() {
 
     private val repositoryListViewModel: RepositoryListViewModel by viewModel()
 
+    private val paginationScrollListener =
+        PaginationScrollListener(POSITION_TO_END_TO_REQUEST_NEW_ITEMS) { repositoryListViewModel.loadNextPage() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.repository_list_activity)
@@ -43,7 +48,7 @@ class RepositoryListActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@RepositoryListActivity)
             addItemDecoration(VerticalSpaceItemDecoration(VERTICAL_SPACE_HEIGHT))
             addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-//            addOnScrollListener(paginationScrollListener)
+            addOnScrollListener(paginationScrollListener)
         }
 
         repositoryListViewModel.liveData.observe(this,
