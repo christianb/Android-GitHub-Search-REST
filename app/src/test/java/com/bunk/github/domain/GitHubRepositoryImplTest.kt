@@ -1,6 +1,6 @@
 package com.bunk.github.domain
 
-import com.bunk.github.data.GitHubDataSource
+import com.bunk.github.data.GitHubRestDataSource
 import com.bunk.github.data.entity.RepositoryItem
 import com.bunk.github.data.entity.RepositoryResponse
 import com.nhaarman.mockito_kotlin.any
@@ -15,13 +15,13 @@ import org.junit.Test
 
 class GitHubRepositoryImplTest {
 
-    private val gitHubDataSource: GitHubDataSource = mock()
+    private val gitHubRestDataSource: GitHubRestDataSource = mock()
 
     private lateinit var classToTest: GitHubRepositoryImpl
 
     @Before
     fun setUp() {
-        classToTest = GitHubRepositoryImpl(gitHubDataSource)
+        classToTest = GitHubRepositoryImpl(gitHubRestDataSource)
     }
 
     @Test
@@ -30,7 +30,7 @@ class GitHubRepositoryImplTest {
         val repositoryItem: RepositoryItem = mock()
         val list: List<RepositoryItem> = listOf(repositoryItem)
         whenever(repositoryResponse.items).thenReturn(list)
-        whenever(gitHubDataSource.getRepositories(eq(50), any())).thenReturn(Single.just(repositoryResponse))
+        whenever(gitHubRestDataSource.getRepositories(eq(50), any())).thenReturn(Single.just(repositoryResponse))
 
         var result: List<RepositoryItem>? = null
 
@@ -48,7 +48,7 @@ class GitHubRepositoryImplTest {
         val repositoryItem: RepositoryItem = mock()
         val list: List<RepositoryItem> = listOf(repositoryItem)
         whenever(repositoryResponse.items).thenReturn(list)
-        whenever(gitHubDataSource.getRepositories(eq(50), any())).thenReturn(Single.just(repositoryResponse))
+        whenever(gitHubRestDataSource.getRepositories(eq(50), any())).thenReturn(Single.just(repositoryResponse))
 
         var result: List<RepositoryItem>? = null
 
@@ -64,7 +64,7 @@ class GitHubRepositoryImplTest {
     fun getDetails() {
         val id = 42
         val repositoryItem: RepositoryItem = mock()
-        whenever(gitHubDataSource.getDetails(id)).thenReturn(Single.just(repositoryItem))
+        whenever(gitHubRestDataSource.getDetails(id)).thenReturn(Single.just(repositoryItem))
 
         var result: RepositoryItem? = null
 

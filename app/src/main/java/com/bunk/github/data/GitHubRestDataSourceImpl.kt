@@ -4,9 +4,9 @@ import com.bunk.github.data.entity.RepositoryItem
 import com.bunk.github.data.entity.RepositoryResponse
 import io.reactivex.Single
 
-class GitHubDataSourceImpl(
+class GitHubRestDataSourceImpl(
     private val gitHubApi: GitHubApi
-) : GitHubDataSource {
+) : GitHubRestDataSource {
 
     override fun getRepositories(stars: Int, page: Int): Single<RepositoryResponse> {
         return gitHubApi.getRepositories("stars:>=$stars", page = page)

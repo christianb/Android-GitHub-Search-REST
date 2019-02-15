@@ -10,15 +10,15 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
 
-class GitHubDataSourceImplTest {
+class GitHubRestDataSourceImplTest {
 
     private val gitHubApi: GitHubApi = mock()
 
-    lateinit var classToTest: GitHubDataSourceImpl
+    lateinit var classToTest: GitHubRestDataSourceImpl
 
     @Before
     fun setUp() {
-        classToTest = GitHubDataSourceImpl(gitHubApi)
+        classToTest = GitHubRestDataSourceImpl(gitHubApi)
     }
 
     @Test
