@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UrbanMobility</string>
+    <string name="app_name">GitHub Search</string>
     <string name="could_not_fetch_repositories">Could not fetch repositories</string>
     <string name="could_not_fetch_repository_details">Could not fetch repository details</string>
     <string name="stars">Stars: %1$d</string>

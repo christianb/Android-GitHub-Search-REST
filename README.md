@@ -1,4 +1,10 @@
-# About
+# GitHub Search
+This app searches repositories and sort them by their number of stars.
+
+## Requirements
+* To run this (legacy) project together with Gradle 4.6 you need to install Java 8.
+
+## About
 * 100% Kotlin
 * AndroidX
 * MVVM
